@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Project definition template. Replace the hard-disk UUID/path after creating the real VDI. -->
+<VirtualBox xmlns="http://www.virtualbox.org/" version="1.21-linux">
+  <Machine uuid="{00000000-0000-0000-0000-000000000001}" name="Vuln-OS" OSType="Debian_64" snapshotFolder="Snapshots" lastStateChange="2026-09-19T00:00:00Z">
+    <Hardware>
+      <Memory RAMSize="4096"/>
+      <CPU count="2"/>
+      <Boot>
+        <Order position="1" device="HardDisk"/>
+        <Order position="2" device="DVD"/>
+      </Boot>
+      <Network>
+        <Adapter slot="0" enabled="true" MACAddress="0800270B0001" type="82540EM">
+          <HostOnlyInterface name="vboxnet0"/>
+        </Adapter>
+      </Network>
+      <AudioAdapter driver="Null" enabled="false"/>
+    </Hardware>
+    <StorageControllers>
+      <StorageController name="SATA" type="AHCI" PortCount="4" useHostIOCache="false" Bootable="true">
+        <AttachedDevice type="HardDisk" hotpluggable="false" port="0" device="0">
+          <Image uuid="{00000000-0000-0000-0000-000000000002}" location="Vuln-OS.vdi"/>
+        </AttachedDevice>
+      </StorageController>
+    </StorageControllers>
+    <ExtraData>
+      <ExtraDataItem name="Vuln-OS/NetworkPolicy" value="HostOnly"/>
+      <ExtraDataItem name="Vuln-OS/Version" value="0.1.0"/>
+    </ExtraData>
+  </Machine>
+</VirtualBox>
