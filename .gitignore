@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+*.sqlite3
+*.db
+backups/
+*.vdi
+*.vmdk
+*.ova
+.vbox-prev
